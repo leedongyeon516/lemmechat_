@@ -86,7 +86,7 @@ const BaseForm = ({
           />
         </div>
       )}
-      <div className="px-5 py-3 d-flex align-items-center input-box">
+      <div className="px-4 py-3 d-flex align-items-center input-box">
         <input
           type="text"
           name="text"
