@@ -2,7 +2,9 @@ import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { useInput } from '../../hooks/useInput'
 import { useLoginMutation } from '../../slices/user/userApiSlice'
+import { QuestionMarkCircleIcon } from '@heroicons/react/20/solid'
 
+import Tutorial from '../tutorial'
 import Spinner from '../spinner'
 
 const Login = ({ setUser, setSecret }) => {
@@ -11,6 +13,7 @@ const Login = ({ setUser, setSecret }) => {
     password: ''
   })
   const [hasError, setHasError] = useState(false)
+  const [isTutorialOn, setIsTutorialOn] = useState(false)
 
   const { name, password } = state
 
@@ -43,8 +46,9 @@ const Login = ({ setUser, setSecret }) => {
     setSecret(guestSecret)
   }
 
+  console.log(isTutorialOn)
   return (
-    <div className="register">
+    <div className="position-relative register">
       <header className="p-4 fixed-top">
         <nav className="container navbar">
           <a href="/" className="navbar-brand text-light">
@@ -87,6 +91,10 @@ const Login = ({ setUser, setSecret }) => {
                   <u>new</u>
                 </Link>{' '}
                 account?
+                <QuestionMarkCircleIcon
+                  className="tutorial-btn"
+                  onClick={() => setIsTutorialOn(!isTutorialOn)}
+                />
               </h5>
               <div className="my-2">
                 <button
@@ -107,10 +115,14 @@ const Login = ({ setUser, setSecret }) => {
         </div>
 
         <div className="col-lg-6 col-md-6 p-5">
-          <h2 className="text-white">
-            To have a conversation with AI you have to add the AI bot to your
-            chat room.
-          </h2>
+          {isTutorialOn ? (
+            <h2 className="text-white">Tutorial</h2>
+          ) : (
+            <h2 className="text-white">
+              To have a conversation with AI you have to add the AI bot to your
+              chat room.
+            </h2>
+          )}
         </div>
       </main>
     </div>

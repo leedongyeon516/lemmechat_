@@ -12,7 +12,7 @@ const AiChatForm = ({ props, activeChat }) => {
 
   const [aiChat, { isLoading }] = useAiChatMutation()
 
-  const onSubmitHandler = async () => {
+  const onSubmitHandler = async browserCallInvitation => {
     const { text, attached } = state
     const { username, onSubmit } = props
 
@@ -25,7 +25,7 @@ const AiChatForm = ({ props, activeChat }) => {
       created,
       activeChatId: activeChat.id,
       sender_username: username,
-      text,
+      text: browserCallInvitation ? browserCallInvitation : text,
       attachments
     }
 
@@ -40,6 +40,7 @@ const AiChatForm = ({ props, activeChat }) => {
 
   return (
     <BaseForm
+      activeChat={activeChat}
       state={state}
       setState={setState}
       onChangeHandler={onChangeHandler}

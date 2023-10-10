@@ -121,6 +121,13 @@ input:focus {
   object-fit: cover;
 }
 
+.tutorial-btn {
+  width: 35px;
+  margin-left: 0.5rem;
+  animation: squeeze 0.75s infinite;
+  cursor: pointer;
+}
+
 .mobile-nav-btn {
   width: 30px;
   position: fixed;

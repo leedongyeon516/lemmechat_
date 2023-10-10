@@ -12,8 +12,9 @@ import Dropzone from 'react-dropzone'
 import {
   Squares2X2Icon,
   AtSymbolIcon,
-  PaperClipIcon,
   PaperAirplaneIcon,
+  PaperClipIcon,
+  CubeIcon,
   HeartIcon,
   ArrowDownLeftIcon,
   ArrowDownRightIcon
@@ -22,6 +23,7 @@ import {
 import Spinner from '../../spinner'
 
 const BaseForm = ({
+  activeChat,
   state,
   setState,
   onChangeHandler,
@@ -37,6 +39,16 @@ const BaseForm = ({
   const [isChatRoomColorOn, setIsChatRoomColorOn] = useState(false)
 
   const dispatch = useDispatch()
+
+  const browserCallHandler = () => {
+    const userName = activeChat.admin.username
+    const roomId = Math.floor(Math.random() * Math.pow(10, 7))
+
+    onSubmitHandler(
+      `Browser call invitation:
+      <br/ ><a href="https://quiet-pastelito-11797b.netlify.app/room.html?user_name=${userName}&room=room_${roomId}" target="_blank">https://lemmetalk.com/room.html?user_name=${userName}&room=room_${roomId}</a>`
+    )
+  }
 
   const changeChatRoomColor = idx => {
     dispatch(resetThemeColor())
@@ -121,11 +133,7 @@ const BaseForm = ({
             )}
           </Dropzone>
 
-          <div
-            className="spinner-grow spinner-grow-sm text-light m-2"
-            role="status"
-            onClick={() => console.log()}
-          ></div>
+          <CubeIcon onClick={() => browserCallHandler()} />
 
           <HeartIcon onClick={() => setIsChatRoomColorOn(!isChatRoomColorOn)} />
           {isChatRoomColorOn && (
