@@ -45,8 +45,7 @@ const BaseForm = ({
     const roomId = Math.floor(Math.random() * Math.pow(10, 7))
 
     onSubmitHandler(
-      `Browser call invitation:
-      <br/ ><a href="https://quiet-pastelito-11797b.netlify.app/room.html?user_name=${userName}&room=room_${roomId}" target="_blank">https://lemmetalk.com/room.html?user_name=${userName}&room=room_${roomId}</a>`
+      `Browser call invitation:<a href="https://quiet-pastelito-11797b.netlify.app/room.html?user_name=${userName}&room=room_${roomId}" target="_blank">https://lemmetalk.com/room.html?user_name=${userName}&room=room_${roomId}</a>`
     )
   }
 
